@@ -6,7 +6,7 @@ const port = 9005
 const app = express()
 
 
-app.use(express.json()) // ? Esta línea nos permitirá acceder a las request en formato json
+app.use(express.json()) // ? Esta línea nos permitirá acceder a las request en formato json, recuerda ejecutar
 app.use('/', taskRouter) // ? Con esta vinculamos todas las rutas guardadas en tasks.router
 
 
