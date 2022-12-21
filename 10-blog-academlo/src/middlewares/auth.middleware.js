@@ -12,10 +12,11 @@ const options = {
     secretOrKey: jwtSecret                                      // ? Y con qué clave verificará si es correcto o no
 }
 passport.use(
-    new JwtStrategy(options, (tokenDecoded, done) => {
+    new JwtStrategy(options, async (tokenDecoded, done) => {
         // ? done(err, user) , retornará si hay un error o no, y si el usuario existe o no 
         try {
-            const user = findOneUser(tokenDecoded.id)
+            const user = await findOneUser(tokenDecoded.id)
+            if(user){console.log("Este es el id", user.id, user)}
             if(user){
                 return done(null, tokenDecoded)
             } else{
